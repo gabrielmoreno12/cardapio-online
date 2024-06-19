@@ -1,14 +1,9 @@
-# Usar uma imagem do JDK 17 como base
-FROM openjdk:17-jdk-alpine
+FROM maven:3.8.5-openjdk-17 as build
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Definir o diretório de trabalho dentro do container
-WORKDIR /app
-
-# Copiar o arquivo JAR gerado pelo Spring Boot para o diretório de trabalho
-COPY target/*.jar app.jar
-
-# Expor a porta que o Spring Boot utiliza
+FROM openjdk:17.0.1-jdk-slim
+COPY --from=build /target/cardapio-0.0.1-SNAPSHOT.jar cardapio.jar
 EXPOSE 8080
+ENTRYPOINT [ "java", "-jar", "cardapio.jar" ]
 
-# Comando para executar o JAR
-ENTRYPOINT ["java", "-jar", "app.jar"]
