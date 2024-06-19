@@ -6,4 +6,3 @@ FROM openjdk:17.0.1-jdk-slim
 COPY --from=build /target/cardapio-0.0.1-SNAPSHOT.jar cardapio.jar
 EXPOSE 8080
 ENTRYPOINT [ "java", "-jar", "cardapio.jar" ]
-
