@@ -1,26 +1,43 @@
 version: '3.8'
 services:
-  postgres-db:
-    image: postgres
-    ports:
-      - "5432:5432"
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     environment:
-      - POSTGRES_PASSWORD=gabriel
-  spring-app:
-    image: backend:latest
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/food
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: gabriel
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
     ports:
       - "8080:8080"
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/food
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=gabriel
+    networks:
+      - app-network
     depends_on:
-      - postgres-db
-  spa-app:
+      - db
+
+  frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "80:80"
-    depends_on:
-      - spring-app
+    networks:
+      - app-network
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: sfood
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: gabriel
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
