@@ -1,9 +1,6 @@
 FROM maven:3.8.5-openjdk-17 as build
-WORKDIR /app
 COPY . .
-RUN mvn clean package -DskipTests
-
-FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/cardapio-0.0.1-SNAPSHOT.jar cardapio.jar
+RUN chmod +x mvnw
+RUN ./mvnw clean install -DskipTests
 EXPOSE 8080
-ENTRYPOINT [ "java", "-jar", "cardapio.jar" ]
+ENTRYPOINT ["java", "-jar", "target/cardapio-0.0.1-SNAPSHOT.jar"]
