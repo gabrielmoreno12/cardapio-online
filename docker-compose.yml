@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:16.3
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=food
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=gabriel
+
+spring-app:
+  image: backend:latest
+  ports:
+    - "8080:8080"
+  environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/food
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=gabriel
+  depends_on:
+      - postgres-db
+
+spa-app:
+  build:
+    context: ./frontend
+    dockerfile: Dockerfile
+  ports:
+    - "8080:8080"
+  depends_on:
+    - spring-app

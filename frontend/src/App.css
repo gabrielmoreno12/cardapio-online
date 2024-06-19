@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  margin-top: 20px;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: start; /* Se os cards tiverem alturas diferentes */
+  min-height: 100vh; /* Ajuste conforme necessário para garantir espaço suficiente */
+  padding: 20px; /* Ajuste conforme necessário */
+}
+
+.btn-add {
+  background-color: blue;
+  color: whitesmoke;
+  font-weight: bold;
+  position: fixed;
+  bottom: 16px;
+  right: 24px;
+  transition: all 0.1s linear 0.1s;
+}
+
+.container button:hover {
+  box-shadow: rgba(100,100,111,0.2) 0px 7px 7px 0px;
+  transform: scale(1.1)
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%; /* Isso garante que ocupe toda a largura do contêiner pai */
+  height: 100%; /* Ajuste conforme necessário, ou remova se não for desejado */
+}
+
+.empty-state img {
+  max-width: 330px; /* Garante que a imagem não ultrapasse o contêiner */
+  height: 330px; /* Mantém a proporção da imagem */
+  margin-top: 150px;
+  opacity: 0.35;
+}
+
+.empty-state p {
+  font-size: 18px;
+  color: #555;
+}
