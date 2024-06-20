@@ -1,5 +1,5 @@
 package com.springdemo.cardapio.food;
-
+import org.springframework.data.annotation.Id;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class Food {
 
+    @jakarta.persistence.Id
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
@@ -27,5 +28,11 @@ public class Food {
     }
 
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public Long getId() {
+        return id;
+    }
 }

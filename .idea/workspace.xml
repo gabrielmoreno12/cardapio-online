@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd7e3f86-5754-4c49-b410-92605e460e6f" name="Changes" comment="" />
+    <list default="true" id="bd7e3f86-5754-4c49-b410-92605e460e6f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/springdemo/cardapio/controller/FoodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/springdemo/cardapio/controller/FoodController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/springdemo/cardapio/food/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/springdemo/cardapio/food/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid19432.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.sh" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +29,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -53,7 +65,7 @@
     &quot;Spring Boot.CardapioApplication.executor&quot;: &quot;Run&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/gabri/OneDrive/Área de Trabalho/Trabalho/Computação/Java/Projetos/cardapio/src/main/java/com/springdemo/cardapio&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/gabri/OneDrive/Área de Trabalho/Trabalho/Computação/Java/Projetos/backend-cardapio-digital&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gabri/OneDrive/Área de Trabalho/Trabalho/Computação/Java/Projetos/cardapio/backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -92,7 +104,9 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -124,6 +138,11 @@
       <workItem from="1718786768777" duration="627000" />
       <workItem from="1718788727707" duration="7000" />
       <workItem from="1718789249776" duration="1605000" />
+      <workItem from="1718875412733" duration="24000" />
+      <workItem from="1718875926492" duration="27000" />
+      <workItem from="1718884864984" duration="5000" />
+      <workItem from="1718884915634" duration="19000" />
+      <workItem from="1718889029459" duration="12000" />
     </task>
     <servers />
   </component>
