@@ -2,17 +2,23 @@
 version: '3.8'
 services:
   db:
-    image: postgres:13
+    image: postgres-iamge
     environment:
       POSTGRES_DB: food
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: gabriel
     ports:
-      - "5432:5432"
+      - "5433:5433"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   app:
-    image: testing
+    image: app-image
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - "8080:8080"
     environment:
