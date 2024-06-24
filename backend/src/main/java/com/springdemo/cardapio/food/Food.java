@@ -26,13 +26,4 @@ public class Food {
         this.title = foodRequestDTO.title();
         this.price = foodRequestDTO.price();
     }
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }

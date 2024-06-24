@@ -1,0 +1,15 @@
+# Dockerfile para PostgreSQL
+
+# Utiliza a imagem oficial do PostgreSQL a partir do Docker Hub
+FROM postgres:13.3
+
+# Variáveis de ambiente para configurar o PostgreSQL
+ENV POSTGRES_DB=food
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=gabriel
+
+# Expor a porta padrão do PostgreSQL
+EXPOSE 5433
+
+# Comando para iniciar o PostgreSQL
+CMD ["postgres"]
