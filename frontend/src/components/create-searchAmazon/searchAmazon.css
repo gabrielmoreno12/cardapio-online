@@ -1,0 +1,30 @@
+.search-amazon {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza horizontalmente */
+  margin-top: 16px;
+}
+
+.search-amazon input {
+  padding: 12px;
+  border: 2px solid #c6c5c5c5;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 18px;
+  line-height: 24px;
+  border-radius: 12px;
+  width: auto; /* Deixe o tamanho automático para ocupar o espaço disponível */
+  margin-right: 8px;
+}
+
+.search-amazon button {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.search-amazon button:hover {
+  background-color: #0056b3;
+}

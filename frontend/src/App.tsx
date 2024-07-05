@@ -1,31 +1,44 @@
 import './App.css';
 import { Card } from './components/card';
 import { useFoodData } from './hooks/useFoodData';
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Importe useEffect
 import { CreateModal } from './components/create-modal/create-modal';
 import NearbyRestaurantsButton from './components/create-neabyRestaurants/NearbyRestaurantsButton';
+import SearchAmazon from './components/create-searchAmazon/searchAmazon';
 
 import emptyImage from './assets/pizza.png';
 
 function App() {
   const { data } = useFoodData();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
+  const [maxPrice, setMaxPrice] = useState<number>(0);
+  const [maxPriceLimit, setMaxPriceLimit] = useState<number>(0); // Estado para armazenar o preço máximo disponível
+
+  // Defina o preço máximo disponível ao carregar os dados
+  useEffect(() => {
+    if (data) {
+      const maxPrice = Math.max(...data.map(food => food.price));
+      setMaxPriceLimit(maxPrice);
+    }
+  }, [data]);
 
   const handleOpenModal = () => {
-    setIsModalOpen(prev => !prev);
+    setIsModalOpen(true);
   };
 
-  const handleFilterByPrice = (price: number) => {
-    setMaxPrice(price);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMaxPrice(Number(event.target.value));
   };
 
   const resetFilter = () => {
-    setMaxPrice(undefined);
+    setMaxPrice(0);
   };
 
-  // Filtrar os dados com base no preço máximo
-  const filteredData = maxPrice
+  const filteredData = maxPrice > 0
     ? data?.filter(foodData => foodData.price <= maxPrice)
     : data;
 
@@ -33,10 +46,16 @@ function App() {
     <div className="container">
       <h1>Cardápio</h1>
       <div className="content">
-        <div className="filter-buttons">
-          <button className="btn-filter" onClick={() => handleFilterByPrice(10)}>Até R$ 10</button>
-          <button className="btn-filter" onClick={() => handleFilterByPrice(20)}>Até R$ 20</button>
-          <button className="btn-filter" onClick={() => handleFilterByPrice(30)}>Até R$ 30</button>
+        <div className="filter-bar">
+          <label htmlFor="priceSlider">Preço até R$ {maxPrice}</label>
+          <input
+            id="priceSlider"
+            type="range"
+            min="0"
+            max={maxPriceLimit} // Ajuste para usar o preço máximo disponível
+            value={maxPrice}
+            onChange={handleSliderChange}
+          />
           <button className="btn-filter" onClick={resetFilter}>Limpar Filtro</button>
         </div>
         <div className="card-grid">
@@ -44,7 +63,7 @@ function App() {
             filteredData.map(foodData => (
               <Card
                 key={foodData.id}
-                id={foodData.id} 
+                id={foodData.id}
                 price={foodData.price}
                 title={foodData.title}
                 image={foodData.image}
@@ -57,9 +76,10 @@ function App() {
             </div>
           )}
         </div>
-        {isModalOpen && <CreateModal closeModal={handleOpenModal} />}
+        {isModalOpen && <CreateModal closeModal={handleCloseModal} />}
         <button className="btn-add" onClick={handleOpenModal}>Adicionar</button>
-        <NearbyRestaurantsButton /> {/* Adicionar o botão */}
+        <NearbyRestaurantsButton />
+        <SearchAmazon /> {/* Adicionar a barra de pesquisa */}
       </div>
     </div>
   );
